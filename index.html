@@ -1018,17 +1018,9 @@ const SITE = {
     <div class="page-content">
       <div class="label fi">Om Arkivet</div>
       <h2 class="title fi d1">${SITE.about.title[0]}<br><em>${SITE.about.title[1]}</em></h2>
-      ${SITE.about.paragraphs.map((p,i)=>`<p class="prose-serif fi d${i+2}">${p}</p>`).join('')}
-      <div class="facts-list fi d5">
-        ${SITE.about.facts.map(f=>`
-          <div class="fact-row">
-            <span class="fact-label">${f.label}</span>
-            <span class="fact-value">${f.value}</span>
-          </div>`).join('')}
-      </div>
-      <div class="prose fi d6" style="margin-top:32px;color:var(--grey-600);font-size:.8rem">
-        Arkivet drivs av en privatperson och finansieras genom donationer. Driftkostnader: €19/år (hosting) + 354 kr/år (domän).
-      </div>
+      <p class="prose-serif fi d2">Arkivet hjälper dig att navigera <strong>offentlighetsprincipen</strong> — från att beställa domar och förundersökningsprotokoll till att skydda din integritet online.</p>
+      <p class="prose-serif fi d3">Sajten drivs av en privatperson, är inte kopplad till någon politisk organisation och drivs helt <strong>ideellt</strong>.</p>
+      <p class="prose-serif fi d4">Arkivet samlar inte in några personuppgifter. Inga cookies sätts, ingen data säljs och ingen information om dina besök delas med tredje part.</p>
     </div>
     ${bottomNav([['guider','Guider'],['kontakt','Kontakt']])}`;
 
