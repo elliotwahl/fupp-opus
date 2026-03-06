@@ -197,7 +197,7 @@
       font-size:clamp(5rem,14vw,14rem);font-weight:400;font-style:italic;
       line-height:.85;letter-spacing:-.04em;margin-bottom:28px;
     }
-    .hero-name span{display:inline-block;opacity:0}
+    .hero-name span{display:inline-block}
 
     /* ══════════════════════════════════════════════
        BUTTONS
@@ -947,8 +947,7 @@ const SITE = {
   pages.hem = `
     <div class="page-center">
       <div class="page-bg" aria-hidden="true">fupp</div>
-      <p class="subtitle fi" style="margin-bottom:32px">${SITE.hero.eyebrow}</p>
-      <h1 class="hero-name fi d1"><span>${SITE.name}</span></h1>
+      <h1 class="hero-name fi"><span>${SITE.name}</span></h1>
       <p class="subtitle fi d2" style="max-width:500px;margin-bottom:48px">${SITE.hero.sub}</p>
       <div class="home-grid fi d3">
         ${[
@@ -1275,32 +1274,6 @@ const SITE = {
     else cursor.classList.remove('expand');
   });
 
-  /* ── Title scramble ──────────────────────────────────────────── */
-  (function scramble(){
-    const chars='abcdefghijklmnopqrstuvwxyz';
-    const spans=document.querySelectorAll('.hero-name span');
-    function run(el,final,dur){
-      el.style.transition='opacity .6s ease';el.style.opacity='1';
-      const n=final.length;const ri=dur/n;let res=0;
-      const tick=()=>{
-        let o='';
-        for(let i=0;i<n;i++){
-          if(i<res)o+=final[i];
-          else if(final[i]===' ')o+=' ';
-          else o+=chars[Math.floor(Math.random()*chars.length)];
-        }
-        el.textContent=o;if(res<n)requestAnimationFrame(tick);
-      };
-      const iv=setInterval(()=>{res++;if(res>=n)clearInterval(iv)},ri);
-      requestAnimationFrame(tick);
-    }
-    setTimeout(()=>{
-      spans.forEach((s,i)=>{
-        const orig=s.textContent;
-        setTimeout(()=>run(s,orig,1200),i*200);
-      });
-    },400);
-  })();
 
   /* ── Card 3D tilt ────────────────────────────────────────────── */
   document.addEventListener('mousemove',e=>{
