@@ -1004,7 +1004,7 @@ const SITE = {
     ['stalker','Stalker'],['faq','FAQ'],['kontakt','Kontakt'],
   ];
   $('nav').innerHTML = `
-    <a href="#hem" data-link class="nav-logo">${SITE.domain}</a>
+    <a href="#hem" data-link class="nav-logo">${SITE.name}</a>
     <ul class="nav-links">
       ${NAV_LINKS.map(l=>`<li>${navLink(l[0],l[1])}</li>`).join('')}
     </ul>
