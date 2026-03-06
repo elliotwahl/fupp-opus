@@ -493,6 +493,15 @@
     .c-link.c-g{background:transparent;color:var(--white);border:1px solid var(--grey-600)}
     .c-link.c-g:hover{border-color:var(--white);transform:translateY(-2px)}
 
+    /* ── Facts list (Om-sidan) ── */
+    .facts-list{margin-top:40px;border-top:1px solid var(--grey-800)}
+    .fact-row{
+      display:flex;justify-content:space-between;align-items:baseline;gap:16px;
+      padding:14px 0;border-bottom:1px solid var(--grey-800);
+    }
+    .fact-label{font-family:var(--f-mono);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--grey-400);white-space:nowrap}
+    .fact-value{font-family:var(--f-sans);font-size:.85rem;color:var(--grey-200);text-align:right}
+
     /* ══════════════════════════════════════════════
        FOOTER / DISCLAIMER
        ══════════════════════════════════════════════ */
@@ -512,20 +521,32 @@
     /* ══════════════════════════════════════════════
        RESPONSIVE
        ══════════════════════════════════════════════ */
+    /* ── Mobile overlay (outside nav — no blend-mode conflict) ── */
+    #mobile-menu{
+      position:fixed;inset:0;z-index:99;
+      background:var(--black);
+      display:flex;flex-direction:column;align-items:center;justify-content:center;
+      opacity:0;pointer-events:none;
+      transition:opacity .4s var(--ease);
+    }
+    #mobile-menu.open{opacity:1;pointer-events:auto}
+    #mobile-menu ul{list-style:none;display:flex;flex-direction:column;gap:36px;text-align:center}
+    #mobile-menu a{
+      font-family:var(--f-mono);font-size:1rem;letter-spacing:.2em;text-transform:uppercase;
+      color:var(--white);text-decoration:none;
+      position:relative;padding-bottom:2px;
+    }
+    #mobile-menu a::after{
+      content:'';position:absolute;bottom:0;left:0;
+      width:0;height:1px;background:var(--white);
+      transition:width .4s var(--ease);
+    }
+    #mobile-menu a:hover::after{width:100%}
+
     @media(max-width:960px){
       nav{padding:18px 24px}
       .nav-burger{display:flex}
-      .nav-links{
-        position:fixed;inset:0;
-        flex-direction:column;align-items:center;justify-content:center;
-        gap:40px;background:var(--black);
-        opacity:0;pointer-events:none;
-        transition:opacity .4s var(--ease);
-        z-index:50;
-      }
-      .nav-links.open{opacity:1;pointer-events:auto}
-      .nav-links a{font-size:1.1rem;letter-spacing:.12em}
-      .nav-links a::after{bottom:-4px}
+      .nav-links{display:none}
       .page-center{padding:80px 24px 60px}
       .page-content{padding:80px 24px 60px}
       .hero-name{font-size:clamp(3.5rem,18vw,5rem)}
@@ -560,6 +581,7 @@
   </svg>
 
   <nav></nav>
+  <div id="mobile-menu" aria-hidden="true"><ul></ul></div>
   <main id="app"></main>
 
   <script>
@@ -950,16 +972,17 @@ const SITE = {
   /* ═══════════════════════════════════════════════════════════════
      BUILD NAV
      ═══════════════════════════════════════════════════════════════ */
+  const NAV_LINKS = [
+    ['om','Om'],['guider','Guider'],['radera','Radera mig'],
+    ['stalker','Stalker'],['faq','FAQ'],['kontakt','Kontakt'],
+  ];
   $('nav').innerHTML = `
     <a href="#hem" data-link class="nav-logo">${SITE.domain}</a>
     <ul class="nav-links">
-      <li>${navLink('guider','Guider')}</li>
-      <li>${navLink('radera','Radera mig')}</li>
-      <li>${navLink('stalker','Stalker')}</li>
-      <li>${navLink('faq','FAQ')}</li>
-      <li>${navLink('kontakt','Kontakt')}</li>
+      ${NAV_LINKS.map(l=>`<li>${navLink(l[0],l[1])}</li>`).join('')}
     </ul>
     <button class="nav-burger" aria-label="Öppna meny"><span></span><span></span><span></span></button>`;
+  $('#mobile-menu ul').innerHTML = NAV_LINKS.map(l=>`<li><a href="#${l[0]}" data-link>${l[1]}</a></li>`).join('');
 
   /* ═══════════════════════════════════════════════════════════════
      BUILD PAGES
@@ -981,7 +1004,7 @@ const SITE = {
           ['faq','Vanliga frågor','Svar på de vanligaste frågorna'],
           ['kontakt','Kontakt','Feedback, frågor och önskemål'],
           ['stod','Stöd Arkivet','Hjälp oss fortsätta driva sidan'],
-          ['disclaimer','Disclaimer','Om Arkivets syfte'],
+          ['om','Om Arkivet','Syfte, bakgrund och driftkostnader'],
         ].map(c => `
           <a href="#${c[0]}" data-link class="home-card">
             <div class="home-card-title">${c[1]}</div>
@@ -989,6 +1012,25 @@ const SITE = {
           </a>`).join('')}
       </div>
     </div>`;
+
+  /* ── OM ──────────────────────────────────────────────────────── */
+  pages.om = `
+    <div class="page-content">
+      <div class="label fi">Om Arkivet</div>
+      <h2 class="title fi d1">${SITE.about.title[0]}<br><em>${SITE.about.title[1]}</em></h2>
+      ${SITE.about.paragraphs.map((p,i)=>`<p class="prose-serif fi d${i+2}">${p}</p>`).join('')}
+      <div class="facts-list fi d5">
+        ${SITE.about.facts.map(f=>`
+          <div class="fact-row">
+            <span class="fact-label">${f.label}</span>
+            <span class="fact-value">${f.value}</span>
+          </div>`).join('')}
+      </div>
+      <div class="prose fi d6" style="margin-top:32px;color:var(--grey-600);font-size:.8rem">
+        Arkivet drivs av en privatperson och finansieras genom donationer. Driftkostnader: €19/år (hosting) + 354 kr/år (domän).
+      </div>
+    </div>
+    ${bottomNav([['guider','Guider'],['kontakt','Kontakt']])}`;
 
   /* ── GUIDER (ÖVERSIKT) ───────────────────────────────────────── */
   pages.guider = `
@@ -1257,18 +1299,20 @@ const SITE = {
 
   /* ── Mobile menu ─────────────────────────────────────────────── */
   const navEl = $('nav');
-  const navLinksEl = navEl.querySelector('.nav-links');
+  const mobileMenu = $('#mobile-menu');
   const burger = navEl.querySelector('.nav-burger');
   function closeMobileMenu(){
-    navLinksEl.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    mobileMenu.setAttribute('aria-hidden','true');
     navEl.classList.remove('menu-open');
   }
   burger.addEventListener('click',()=>{
-    const open = !navLinksEl.classList.contains('open');
-    navLinksEl.classList.toggle('open',open);
+    const open = !mobileMenu.classList.contains('open');
+    mobileMenu.classList.toggle('open',open);
+    mobileMenu.setAttribute('aria-hidden', open ? 'false' : 'true');
     navEl.classList.toggle('menu-open',open);
   });
-  navLinksEl.addEventListener('click',e=>{
+  mobileMenu.addEventListener('click',e=>{
     if(e.target.closest('a')) closeMobileMenu();
   });
 
