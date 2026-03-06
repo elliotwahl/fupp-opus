@@ -521,6 +521,29 @@
     /* ══════════════════════════════════════════════
        RESPONSIVE
        ══════════════════════════════════════════════ */
+    /* ── Banner ── */
+    #banner{
+      position:fixed;top:0;left:0;right:0;z-index:50;
+      background:var(--grey-900);
+      padding:72px 48px 16px;
+      transform:translateY(-100%);
+      transition:transform .7s var(--ease);
+      overflow:hidden;
+    }
+    #banner.show{transform:translateY(0)}
+    #banner p{
+      font-family:var(--f-mono);font-size:.55rem;
+      letter-spacing:.25em;text-transform:uppercase;
+      color:var(--grey-400);text-align:center;
+    }
+    #banner-progress{
+      position:absolute;bottom:0;left:0;
+      height:1px;background:var(--white);width:100%;
+    }
+    #banner-progress.run{animation:bp 5s linear forwards}
+    @keyframes bp{to{width:0}}
+    @media(max-width:960px){#banner{padding-top:54px}}
+
     /* ── Mobile overlay (outside nav — no blend-mode conflict) ── */
     #mobile-menu{
       position:fixed;inset:0;z-index:99;
@@ -580,6 +603,7 @@
     </symbol>
   </svg>
 
+  <div id="banner"><p>Arkivet har fått en ny design</p><div id="banner-progress"></div></div>
   <nav></nav>
   <div id="mobile-menu" aria-hidden="true"><ul></ul></div>
   <main id="app"></main>
@@ -1363,6 +1387,18 @@ const SITE = {
     btn.style.transform='';
     setTimeout(()=>btn.style.transition='',500);
   });
+
+  /* ── Banner ──────────────────────────────────────────────────── */
+  (function(){
+    const b = $('#banner'), p = $('#banner-progress');
+    setTimeout(()=>{
+      b.classList.add('show');
+      setTimeout(()=>{
+        p.classList.add('run');
+        setTimeout(()=>b.classList.remove('show'), 5000);
+      }, 700);
+    }, 600);
+  })();
 
   /* ── Touch ───────────────────────────────────────────────────── */
   if('ontouchstart' in window){
