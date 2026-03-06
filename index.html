@@ -957,7 +957,6 @@ const SITE = {
           ['jo','JO-anmälan','Anmäl felaktig myndighetsbehandling'],
           ['faq','Vanliga frågor','Svar på de vanligaste frågorna'],
           ['kontakt','Kontakt','Feedback, frågor och önskemål'],
-          ['politik','Politik','Riksdagspartier om offentlighetsprincipen'],
           ['stod','Stöd Arkivet','Hjälp oss fortsätta driva sidan'],
           ['disclaimer','Disclaimer','Om Arkivets syfte'],
         ].map(c => `
@@ -1122,23 +1121,6 @@ const SITE = {
     ${bottomNav([['guider','Guider'],['hem','Hem']])}`;
 
   /* ── POLITIK ─────────────────────────────────────────────────── */
-  const pol = SITE.politik;
-  pages.politik = `
-    <div class="page-content">
-      <div class="label fi">Politik</div>
-      <h2 class="title fi d1">Offentlighets-<br><em>principen</em></h2>
-      <p class="prose-serif fi d2">${pol.intro}</p>
-      <div class="pol-q fi d3">${pol.question}</div>
-      <div class="fi d4">
-        ${pol.responses.map(r => `
-          <div class="pol-resp">
-            <div class="pol-party">${r.party}</div>
-            <p class="pol-text">"${r.text}"</p>
-          </div>`).join('')}
-      </div>
-    </div>
-    ${bottomNav([['hem','Hem']])}`;
-
   /* ── STÖD ────────────────────────────────────────────────────── */
   const sup = SITE.support;
   pages.stod = `
