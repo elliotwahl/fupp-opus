@@ -120,12 +120,12 @@ const SITE = {
     note: "Vet du inte personnummer så kan du hitta det via MrKoll eller Ratsit. Om du inte vet vilken tingsrätt personen dömdes i är det bra om du vet var brottet begicks. På domstol.se kan du söka via postnummer och på så sätt hitta rätt tingsrätt. Här kommer en enkel genomgång:",
     steps: [
       "Välj en domstol. Vet du inte vilken domstol målet gäller så kan du söka med postnummer istället.",
-      "Klicka på E-tjänst och sedan den blåa knappen.",
+      "Klicka på E-tjänst och sedan E-tjänst igen.",
       'Nu öppnas en ny flik, om "välj domstol" inte är ifyllt så välj domstolen igen. Om du känner till målnumret, klicka Ja annars klicka Nej.',
-      "Har du ett personnummer så fyller du i det, har du ett målnummer fyller du i det istället.",
+      "Har du ett personnummer på någon part i målet så fyller du i det, har du ett målnummer fyller du i det istället.",
       "Fyll i mejladressen som domarna ska skickas till. Kom ihåg att all e-post som skickas till domstolarna blir offentliga och vem som helst kan begära att få läsa dessa, så om du inte vill att folk ska veta vad du beställt kan du göra en ny mejladress.",
-      'Under "Din fakturaadress", välj någon av de två sista alternativen. Du kommer ändå inte behöva betala något, om du inte beställer mer än 9 handlingar (1 handling brukar motsvara 1 PDF).',
-      "Skriv det som står i skummisrutan i textfältet under, den är inte case-sensitive. Tryck sedan utanför textrutan och klicka på skicka! Är det en vardag kl 13 är det möjligt att du får handlingarna inom ett par minuter, däremot kan du behöva vänta tills nästa arbetsdag om du beställer senare på kvällen.",
+      'Under "Din fakturaadress", välj någon av de två sista alternativen. Du kommer ändå inte behöva betala något, om du inte beställer mer än 9 handlingar (1 handling motsvarar 1 PDF).',
+      "Klicka på skicka! Det tar en liten stund innan din begäran skickas iväg, men när den gjort det ser det ut som på bilden nedan. Är det en vardag efter lunch är det möjligt att du får handlingarna inom ett par minuter, däremot kan du behöva vänta tills nästa arbetsdag om du beställer senare på kvällen. Handläggningstiden varierar stort mellan olika domstolar.",
     ],
     links: [
       { label: "Beställ domar (domstol.se)", url: "https://www.domstol.se/domar-och-beslut/bestall-domar-beslut-eller-handlingar/" },
