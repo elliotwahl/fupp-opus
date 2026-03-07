@@ -53,6 +53,10 @@
     body::before{
       content:'';position:fixed;inset:0;z-index:0;
       background:url('bg.jpg') center/cover no-repeat;
+      opacity:.18;
+      transition:opacity .6s var(--ease);
+    }
+    body.on-hem::before{
       opacity:.25;
       pointer-events:none;
     }
@@ -944,6 +948,7 @@
     next.classList.add('active');
 
     currentPage = id;
+    document.body.classList.toggle('on-hem', id === 'hem');
     history.replaceState(null, '', '#' + id);
     document.title = id === 'hem'
       ? 'Arkivet — fupp.se'
