@@ -36,11 +36,11 @@ const SITE = {
      klistra in det i listan — glöm inte komma efter }.
   ══════════════════════════════════════════════════════════════ */
   dokument: {
-    intro: "Särskilt utvalda allmänna handlingar med ett uppenbart allmänintresse.",
+    intro: "Särskilt utvalda exempel på allmänna handlingar.",
     items: [
       {
         title: "Polisens slang-lexikon",
-        desc:  "Polisens interna ordlista över slanguttryck och koder — begärd och utgiven som allmän handling.",
+        desc:  "Polisens interna ordlista över slanguttryck.",
         url:   "https://drive.google.com/drive/folders/1Kn64IaodPDuEvH32W5RPlaBAb-YLasxD",
       },
       {
@@ -61,12 +61,20 @@ const SITE = {
   ══════════════════════════════════════════════════════════════ */
   faq: [
     {
+      q: "Får personen veta att jag beställt deras domar?",
+      a: "Nej, personen blir inte meddelad om du läser deras domar eller liknande.",
+    },
+    {
+      q: "Kan en person ta reda på att jag beställt deras domar?",
+      a: "Vanligtvis, ja. Vissa begäranden, alltså beställningar, tas bort efter att de har hanterats. Men utgå från att din begäran också kan begäras ut och är offentlig. Om detta är ett problem för dig, använd en kontaktväg som inte kan kopplas till dig.",
+    },
+    {
       q: "Kostar det något att beställa domar?",
-      a: "Nej, det är helt gratis att beställa domar via domstol.se, så länge du inte beställer fler än 9 handlingar åt gången.",
+      a: "Det beror på antalet handlingar du beställer. 1-9 handlingar (domar) är gratis, 10:e handlingen kostar 50 kronor och varje handling efter det kostar ytterligare 2 kronor. Information finns på domstol.se",
     },
     {
       q: "Hur lång tid tar det att få handlingarna?",
-      a: "Beställer du på en vardag under kontorstid kan du ofta få handlingarna inom ett par minuter. Annars kan det ta till nästa arbetsdag.",
+      a: "Beställer du på en vardag under kontorstid kan du ofta få handlingarna inom ett par minuter. Annars kan det ta till nästa arbetsdag. Skyndsamhetskravet i 2 kap. 16 § Tryckfrihetsförordningen innebär att en begäran av handling ska hanteras skyndsamt. Justitieombudsmannen (JO) har tidigare konstaterat att besked angående utlämnandet ska lämnas samma dag.",
     },
     {
       q: "Kan jag vara anonym?",
@@ -74,7 +82,15 @@ const SITE = {
     },
     {
       q: "Vad gör jag om myndigheten vägrar lämna ut?",
-      a: "Begär ett myndighetsbeslut. Det kan sedan överklagas till hovrätten. Se sektionen Överklaga för en steg-för-steg-guide.",
+      a: "Begär ett myndighetsbeslut. Det kan sedan överklagas till hovrätten. Se sektionen Överklaga för en steg-för-steg-guide, eller fråga myndigheten.",
+    },
+    {
+      q: "Jag vet inte hur jag ska formulera mig?",
+      a: "Hur du formulerar dig är inte superviktigt, du blir inte nekad p.g.a. dålig grammatik eller oformellt språk. Viktigaste är att du är tydlig med vad du vill ha.",
+    },
+    {
+      q: "De vill inte lämna ut handlingar digitalt, kan de göra så?",
+      a: "Tyvärr ja, det finns inget krav på att lämna ut handlingar digitalt. På så vis kan myndigheter kräva stora summor pengar för att lämna ut i pappersform.",
     },
   ],
 
@@ -259,7 +275,7 @@ const SITE = {
   ══════════════════════════════════════════════════════════════ */
   stalker: {
     title: ["Hindra en", "stalker"],
-    intro: "Idag är det väldigt lätt för en stalker att hitta information om dig. Här är några tips om du vill sätta käppar i hjulet för en stalker:",
+    intro: "Idag är det väldigt lätt för en stalker att hitta information om dig. Här är några tips för hur du skyddar din identitet:",
     tips: [
       { title: "Ha inte ditt riktiga namn som användarnamn", desc: "Undvik att publicera ditt fullständiga namn i dina sociala medier." },
       { title: "Berätta inte att du fyller år",              desc: "Ett förnamn och ett födelsedatum räcker gott för att hitta väldigt mycket känslig information om dig." },
