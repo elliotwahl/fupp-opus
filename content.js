@@ -150,8 +150,10 @@ const SITE = {
     ],
     templateNote: "Om det är ett specifikt mål du söker kan du berätta vad målet handlar om. Är det många träffar brukar domstolen skicka en lista med alla träffar där du kan välja den du söker.",
     denied: "Skulle det vara så att domstolen inte vill lämna ut fuppen kan det bero på flera saker: den är belagd med sekretess (ofta i sexualbrott) eller att de skickar endast FUP via post. Skulle detta vara fallet kan du be om ett överklagbart beslut. Mer om att överklaga finner du under sektionen Överklaga.",
+    polisNote: "Det går även att begära förundersökningsprotokoll direkt från polisen via deras e-tjänst.",
     links: [
-      { label: "Sök med postnummer",            url: "https://www.domstol.se/domar-och-beslut/bestall-domar-beslut-eller-handlingar/" },
+      { label: "Begär FUP från polisen",          url: "https://etjanster.polisen.se/eallmanhandling/boah/" },
+      { label: "Sök med postnummer",              url: "https://www.domstol.se/domar-och-beslut/bestall-domar-beslut-eller-handlingar/" },
       { label: "Kontaktuppgifter till domstolar", url: "https://www.domstol.se/hitta-domstol/allmanna-domstolar/" },
     ],
   },

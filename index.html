@@ -773,6 +773,7 @@
       if (g.followUpTemplate) h += `<div class="tpl fi d6">${g.followUpTemplate}</div>`;
     }
     if (g.denied)        h += `<p class="note fi d7">${g.denied}</p>`;
+    if (g.polisNote)     h += `<p class="prose fi d7">${g.polisNote}</p>`;
     if (key !== 'domar' && g.links && g.links.length) {
       h += `<div class="btn-row fi d7">${g.links.map((l,i) =>
         `<a href="${l.url}" target="_blank" rel="noopener" class="btn ${i===0?'btn-w':'btn-o'}">${icon('ext')} ${l.label}</a>`
