@@ -740,6 +740,11 @@
     if (g.intro)         h += `<p class="prose fi d2">${g.intro}</p>`;
     if (g.requirements)  h += `<ul class="req-list fi d3">${g.requirements.map(r=>`<li>${r}</li>`).join('')}</ul>`;
     if (g.note)          h += `<p class="prose fi d3">${g.note}</p>`;
+    if (key === 'domar' && g.links && g.links.length) {
+      h += `<div class="btn-row fi d4">${g.links.map((l,i) =>
+        `<a href="${l.url}" target="_blank" rel="noopener" class="btn ${i===0?'btn-w':'btn-o'}">${icon('ext')} ${l.label}</a>`
+      ).join('')}</div>`;
+    }
     if (g.paragraphs)    h += g.paragraphs.map((p,i)=>`<p class="prose fi d${i+2}">${p}</p>`).join('');
     if (g.steps) {
       h += `<div class="tpl-label fi d4">Steg-för-steg</div>`;
@@ -768,7 +773,7 @@
       if (g.followUpTemplate) h += `<div class="tpl fi d6">${g.followUpTemplate}</div>`;
     }
     if (g.denied)        h += `<p class="note fi d7">${g.denied}</p>`;
-    if (g.links && g.links.length) {
+    if (key !== 'domar' && g.links && g.links.length) {
       h += `<div class="btn-row fi d7">${g.links.map((l,i) =>
         `<a href="${l.url}" target="_blank" rel="noopener" class="btn ${i===0?'btn-w':'btn-o'}">${icon('ext')} ${l.label}</a>`
       ).join('')}</div>`;
