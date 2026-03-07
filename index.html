@@ -949,6 +949,23 @@ const SITE = {
     },
   ],
 
+  /* ── Dokument ──────────────────────────────────────────────────── */
+  dokument: {
+    intro: "Särskilt utvalda allmänna handlingar med ett uppenbart allmänintresse.",
+    items: [
+      {
+        title: "Polisens slang-lexikon",
+        desc:  "Polisens interna ordlista över slanguttryck och koder — begärd och utgiven som allmän handling.",
+        url:   "https://drive.google.com/drive/folders/1Kn64IaodPDuEvH32W5RPlaBAb-YLasxD",
+      },
+      {
+        title: "Helikopterrånet — förundersökningen",
+        desc:  "Förundersökningsprotokollet från det spektakulära rånet mot G4S i Västberga 2009, där gärningsmännen landade med helikopter på taket.",
+        url:   "https://corruptiohelikoperranet.wordpress.com/2013/07/05/helikopterranet-forundersokningen-pdf/",
+      },
+    ],
+  },
+
   /* ── Stöd ──────────────────────────────────────────────────────── */
   support: {
     text:  "Tyvärr är Arkivet inte helt gratis att driva. Vill du vara med och bidra till Arkivet så det kan fortsätta leva och bli ännu bättre så hade det uppskattats något enormt! Här nedan finner du sätt att donera på, samt alla utgifter sidan har, så du vet vad pengarna går till.",
@@ -1000,7 +1017,7 @@ const SITE = {
      BUILD NAV
      ═══════════════════════════════════════════════════════════════ */
   const NAV_LINKS = [
-    ['om','Om'],['guider','Guider'],['radera','Radera mig'],
+    ['om','Om'],['guider','Guider'],['dokument','Dokument'],['radera','Radera mig'],
     ['stalker','Stalker'],['faq','FAQ'],['kontakt','Kontakt'],
   ];
   $('nav').innerHTML = `
@@ -1030,6 +1047,7 @@ const SITE = {
           ['jo','JO-anmälan','Anmäl felaktig myndighetsbehandling'],
           ['faq','Vanliga frågor','Svar på de vanligaste frågorna'],
           ['kontakt','Kontakt','Feedback, frågor och önskemål'],
+          ['dokument','Dokument','Utvalda allmänna handlingar av allmänintresse'],
           ['stod','Stöd Arkivet','Hjälp oss fortsätta driva sidan'],
           ['om','Om Arkivet','Syfte, bakgrund och driftkostnader'],
         ].map(c => `
@@ -1051,6 +1069,25 @@ const SITE = {
       <p class="prose-serif fi d4">Arkivet samlar inte in personuppgifter. Anonym besöksstatistik samlas in via Umami Analytics — inga cookies används och ingen data kan kopplas till dig som individ.</p>
     </div>
     ${bottomNav([['guider','Guider'],['kontakt','Kontakt']])}`;
+
+  /* ── DOKUMENT ────────────────────────────────────────────────── */
+  pages.dokument = `
+    <div class="page-content">
+      <div class="label fi">Dokument</div>
+      <h2 class="title fi d1">Allmänna<br><em>handlingar</em></h2>
+      <p class="prose-serif fi d2">${SITE.dokument.intro}</p>
+      <div style="margin-top:48px;display:flex;flex-direction:column;gap:2px">
+        ${SITE.dokument.items.map((d,i)=>`
+          <a href="${d.url}" target="_blank" rel="noopener" class="fi d${i+3}" style="display:block;padding:32px;background:var(--grey-900);text-decoration:none;color:inherit;transition:background .3s" onmouseenter="this.style.background='var(--grey-800)'" onmouseleave="this.style.background='var(--grey-900)'">
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:10px">
+              <span style="font-family:var(--f-serif);font-size:1.3rem;font-style:italic">${d.title}</span>
+              <span style="font-family:var(--f-mono);font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--grey-400);white-space:nowrap">${icon('ext')} Öppna</span>
+            </div>
+            <p style="font-size:.8rem;color:var(--grey-400);line-height:1.6;margin:0">${d.desc}</p>
+          </a>`).join('')}
+      </div>
+    </div>
+    ${bottomNav([['hem','Hem']])}`;
 
   /* ── GUIDER (ÖVERSIKT) ───────────────────────────────────────── */
   pages.guider = `
