@@ -783,6 +783,7 @@
       <div class="page-content">
         <div class="label fi">Guide 0${num}</div>
         <h2 class="title-sm fi d1">${g.title}</h2>
+        ${g.updated ? `<p class="fi d1" style="font-family:var(--f-mono);font-size:.65rem;color:var(--grey-600);letter-spacing:.1em;margin:0 0 8px">Uppdaterad ${g.updated}</p>` : ''}
         ${h}
       </div>
       ${bottomNav([['guider','Guider'],['hem','Hem']])}`;

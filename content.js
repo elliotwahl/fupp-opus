@@ -111,6 +111,7 @@ const SITE = {
   /* ── Guideinnehåll ─────────────────────────────────────────── */
 
   domar: {
+    updated: "2026-03-08",
     title: "Att beställa domar",
     intro: "Att beställa domar är det lättaste av alla handlingar. Genom att klicka på knappen nedan kommer du till domstol.se där du kan beställa domar via ett webbformulär. Det är helt gratis och allt du behöver är:",
     requirements: [
