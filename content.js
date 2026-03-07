@@ -202,7 +202,7 @@ const SITE = {
   ovrigt: {
     title: "Att beställa övriga handlingar",
     paragraphs: [
-      "Det finns många handlingar att beställa. Inte bara från domstolar utan det gäller alla myndigheter i Sverige. Polisen, skatteverket, åklagarmyndigheten, transportstyrelsen osv.",
+      "Det finns många handlingar att beställa. Inte bara från domstolar utan det gäller alla myndigheter i Sverige. Polisen, Skatteverket, Åklagarmyndigheten, Transportstyrelsen osv.",
       'För att beställa handlingar från en myndighet räcker det med att du mejlar dem. Vissa har speciella formulär som domstol.se har men i många fall måste du mejla dem. Googla på "(myndighet) allmän handling" så borde du komma rätt. Ifall du mejlar dem så räcker det med att du mejlar registratorn eller någon annan på myndigheten och berättar vad du söker så skickar de dig vidare till rätt avdelning.',
     ],
   },
