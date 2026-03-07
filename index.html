@@ -50,6 +50,13 @@
       -webkit-font-smoothing:antialiased;
       cursor:none;
     }
+    body::before{
+      content:'';position:fixed;inset:0;z-index:0;
+      background:url('bg.jpg') center/cover no-repeat;
+      opacity:.18;
+      pointer-events:none;
+    }
+    #app{position:relative;z-index:1}
     ::selection{background:var(--white);color:var(--black)}
 
     /* ══════════════════════════════════════════════
