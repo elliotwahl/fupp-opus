@@ -274,8 +274,8 @@ const SITE = {
        },
   ══════════════════════════════════════════════════════════════ */
   stalker: {
-    title: ["Hindra en", "stalker"],
-    intro: "Idag är det väldigt lätt för en stalker att hitta information om dig. Här är några tips för hur du skyddar din identitet:",
+    title: ["Skydda din", "information"],
+    intro: "Idag är det väldigt lätt att hitta information om dig, allt som krävs är en webbläsare. Här är några tips för hur du skyddar din identitet:",
     tips: [
       { title: "Ha inte ditt riktiga namn som användarnamn", desc: "Undvik att publicera ditt fullständiga namn i dina sociala medier." },
       { title: "Berätta inte att du fyller år",              desc: "Ett förnamn och ett födelsedatum räcker gott för att hitta väldigt mycket känslig information om dig." },
