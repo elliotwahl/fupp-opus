@@ -671,9 +671,9 @@
           ['jo','JO-anmälan','Anmäl felaktig myndighetsbehandling'],
           ['faq','Vanliga frågor','Svar på de vanligaste frågorna'],
           ['kontakt','Kontakt','Feedback, frågor och önskemål'],
-          ['dokument','Dokument','Utvalda allmänna handlingar av allmänintresse'],
+          ['dokument','Dokument','Utvalda allmänna handlingar'],
           ['stod','Stöd Arkivet','Hjälp oss fortsätta driva sidan'],
-          ['om','Om Arkivet','Syfte, bakgrund och driftkostnader'],
+          ['om','Om Arkivet','Syfte och bakgrund'],
         ].map(c => `
           <a href="#${c[0]}" data-link class="home-card">
             <div class="home-card-title">${c[1]}</div>
@@ -743,7 +743,19 @@
     if (g.paragraphs)    h += g.paragraphs.map((p,i)=>`<p class="prose fi d${i+2}">${p}</p>`).join('');
     if (g.steps) {
       h += `<div class="tpl-label fi d4">Steg-för-steg</div>`;
-      h += `<ol class="step-list fi d4">${g.steps.map(s=>`<li>${s}</li>`).join('')}</ol>`;
+      const stepImgs = key === 'domar' ? {
+        2: ['dom-steg2.png'],
+        3: ['dom-steg3.png'],
+        4: ['dom-steg4.1.png','dom-steg4.2.png'],
+        5: ['dom-steg5.png'],
+        6: ['dom-steg6.png'],
+        7: ['dom-steg7.png'],
+      } : {};
+      h += `<ol class="step-list fi d4">${g.steps.map((s,i)=>{
+        const imgs = stepImgs[i+1] || [];
+        const imgHTML = imgs.map(src=>`<img src="${src}" alt="" style="display:block;width:100%;max-width:480px;margin-top:16px;border:1px solid var(--grey-800);">`).join('');
+        return `<li>${s}${imgHTML}</li>`;
+      }).join('')}</ol>`;
     }
     if (g.templateIntro) h += `<p class="prose fi d4">${g.templateIntro}</p>`;
     if (g.templates) {

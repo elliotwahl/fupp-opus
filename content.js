@@ -117,7 +117,7 @@ const SITE = {
       "Ett personnummer (970821-4353) eller målnummer (B/T/Ä 123-45)",
       "Veta i vilken tingsrätt personen dömdes/frikändes alternativt var brottet begicks",
     ],
-    note: "Vet du inte personnummer så kan du hitta det via mrkoll eller ratsit. Om du inte vet vilken tingsrätt personen dömdes i är det bra om du vet var brottet begicks. På domstol.se kan du söka via postnummer och på så sätt hitta rätt tingsrätt. Här kommer en idiotsäker genomgång:",
+    note: "Vet du inte personnummer så kan du hitta det via MrKoll eller Ratsit. Om du inte vet vilken tingsrätt personen dömdes i är det bra om du vet var brottet begicks. På domstol.se kan du söka via postnummer och på så sätt hitta rätt tingsrätt. Här kommer en enkel genomgång:",
     steps: [
       "Välj en domstol. Vet du inte vilken domstol målet gäller så kan du söka med postnummer istället.",
       "Klicka på E-tjänst och sedan den blåa knappen.",
