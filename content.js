@@ -300,7 +300,6 @@ const SITE = {
   support: {
     text:  "Tyvärr är Arkivet inte helt gratis att driva. Vill du vara med och bidra till Arkivet så det kan fortsätta leva och bli ännu bättre så hade det uppskattats något enormt! Här nedan finner du sätt att donera på, samt alla utgifter sidan har, så du vet vad pengarna går till.",
     costs: [
-      { item: "Hemsida",               cost: "19 euro/år" },
       { item: "Domännamn och tillägg", cost: "354 kr/år" },
     ],
     links: [
