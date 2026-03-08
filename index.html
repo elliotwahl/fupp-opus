@@ -557,11 +557,18 @@
       letter-spacing:.25em;text-transform:uppercase;
       color:var(--grey-400);
     }
+    #banner-close{
+      background:none;border:none;cursor:pointer;
+      color:var(--grey-600);font-size:.7rem;padding:0 0 0 16px;
+      line-height:1;flex-shrink:0;transition:color .2s;
+    }
+    #banner-close:hover{color:var(--white)}
+    #banner{display:flex;align-items:center}
     #banner-progress{
       position:absolute;bottom:0;left:0;
       height:1px;background:var(--white);width:100%;
     }
-    #banner-progress.run{animation:bp 5s linear forwards}
+    #banner-progress.run{animation:bp 10s linear forwards}
     @keyframes bp{to{width:0}}
     @media(max-width:960px){#banner{top:54px}}
 
@@ -624,7 +631,7 @@
     </symbol>
   </svg>
 
-  <div id="banner"><p>Arkivet har fått en ny design — Samma innehåll som vanligt.</p><div id="banner-progress"></div></div>
+  <div id="banner"><p>Arkivet har fått en ny design — Samma innehåll som vanligt.</p><button id="banner-close" aria-label="Stäng">✕</button><div id="banner-progress"></div></div>
   <nav></nav>
   <div id="mobile-menu" aria-hidden="true"><ul></ul></div>
   <main id="app"></main>
@@ -1145,12 +1152,18 @@
 
   /* ── Banner ──────────────────────────────────────────────────── */
   (function(){
+    if (document.cookie.split(';').some(c => c.trim() === 'banner_seen=1')) return;
     const b = $('#banner'), p = $('#banner-progress');
+    function dismiss() {
+      b.classList.remove('show');
+      document.cookie = 'banner_seen=1;max-age=31536000;path=/';
+    }
+    $('#banner-close').addEventListener('click', dismiss);
     setTimeout(()=>{
       b.classList.add('show');
       setTimeout(()=>{
         p.classList.add('run');
-        setTimeout(()=>b.classList.remove('show'), 5000);
+        setTimeout(dismiss, 10000);
       }, 700);
     }, 600);
   })();
