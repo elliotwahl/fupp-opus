@@ -8,11 +8,17 @@
   <meta name="author" content="Arkivet">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://fupp.se/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://fupp.se/">
   <meta property="og:title" content="Arkivet — fupp.se">
   <meta property="og:description" content="Din guide till offentlighetsprincipen i Sverige.">
+  <meta property="og:image" content="https://fupp.se/og.svg">
   <meta property="og:locale" content="sv_SE">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Arkivet — fupp.se">
+  <meta name="twitter:description" content="Din guide till offentlighetsprincipen i Sverige.">
+  <meta name="twitter:image" content="https://fupp.se/og.svg">
   <script defer src="/stats/script.js" data-website-id="d0f56e78-bb66-4c7f-be59-9b30aed4461d" data-host-url="https://fupp.se/stats"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -630,8 +636,27 @@
   const $ = s => document.querySelector(s);
   const icon = n => `<svg width="14" height="14"><use href="#i-${n}"/></svg>`;
 
-  function navLink(hash, label) {
-    return `<a href="#${hash}" data-link>${label}</a>`;
+  const PAGE_DESCS = {
+    hem:                 'Din guide till offentlighetsprincipen i Sverige. Lär dig beställa domar, förundersökningsprotokoll, dagboksblad och skydda din integritet.',
+    guider:              'Guider för att beställa allmänna handlingar — domar, FUP, dagboksblad och mer.',
+    domar:               'Steg-för-steg: Beställ domar gratis via domstol.se med personnummer eller målnummer.',
+    fup:                 'Beställ förundersökningsprotokoll (FUP) från tingsrätten eller polisens e-tjänst.',
+    dagboksblad:         'Beställ dagboksblad — en förteckning över alla handlingar i ett mål och deras sekretessstatus.',
+    belastningsregister: 'Hur du kan komma åt belastningsregistret via allmänna handlingar i ett mål.',
+    overklaga:           'Steg-för-steg: Så överklagar du ett nekat beslut om allmänna handlingar till tingsrätt och hovrätt.',
+    ovrigt:              'Beställ handlingar från alla svenska myndigheter — polisen, skatteverket, transportstyrelsen och fler.',
+    radera:              'Radera dina personuppgifter från MrKoll, Ratsit, Hitta.se, Eniro och andra söktjänster.',
+    stalker:             'Tips och råd för att skydda din identitet och dina personuppgifter online.',
+    faq:                 'Vanliga frågor om offentlighetsprincipen, att beställa handlingar och vad som gäller.',
+    jo:                  'Guide för att anmäla myndighetsmissbruk till JO — Justitieombudsmannen.',
+    dokument:            'Utvalda allmänna handlingar — polisens slang-lexikon, förundersökningsprotokoll och mer.',
+    kontakt:             'Kontakta Arkivet med frågor, feedback eller felrapporter.',
+    om:                  'Om Arkivet — ett privat ideellt initiativ för att göra offentlighetsprincipen tillgänglig.',
+    stod:                'Stöd Arkivet och hjälp oss fortsätta driva sajten ideellt.',
+  };
+
+  function navLink(path, label) {
+    return `<a href="/${path}" data-link>${label}</a>`;
   }
   function bottomNav(links) {
     return `<div class="page-nav">${links.map(l => navLink(l[0], l[1])).join('')}</div>`;
@@ -645,12 +670,12 @@
     ['stalker','Skydda din information'],['faq','FAQ'],['kontakt','Kontakt'],
   ];
   $('nav').innerHTML = `
-    <a href="#hem" data-link class="nav-logo">${SITE.name}</a>
+    <a href="/" data-link class="nav-logo">${SITE.name}</a>
     <ul class="nav-links">
       ${NAV_LINKS.map(l=>`<li>${navLink(l[0],l[1])}</li>`).join('')}
     </ul>
     <button class="nav-burger" aria-label="Öppna meny"><span></span><span></span><span></span></button>`;
-  $('#mobile-menu ul').innerHTML = NAV_LINKS.map(l=>`<li><a href="#${l[0]}" data-link>${l[1]}</a></li>`).join('');
+  $('#mobile-menu ul').innerHTML = NAV_LINKS.map(l=>`<li><a href="/${l[0]}" data-link>${l[1]}</a></li>`).join('');
 
   /* ═══════════════════════════════════════════════════════════════
      BUILD PAGES
@@ -675,7 +700,7 @@
           ['stod','Stöd Arkivet','Hjälp oss fortsätta driva sidan'],
           ['om','Om Arkivet','Syfte och bakgrund'],
         ].map(c => `
-          <a href="#${c[0]}" data-link class="home-card">
+          <a href="/${c[0]}" data-link class="home-card">
             <div class="home-card-title">${c[1]}</div>
             <div class="home-card-desc">${c[2]}</div>
           </a>`).join('')}
@@ -934,6 +959,37 @@
     ${bottomNav([['hem','Hem']])}`;
 
   /* ═══════════════════════════════════════════════════════════════
+     JSON-LD STRUCTURED DATA
+     ═══════════════════════════════════════════════════════════════ */
+  (function(){
+    const ld = document.createElement('script');
+    ld.type = 'application/ld+json';
+    ld.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://fupp.se/#website",
+          "url": "https://fupp.se/",
+          "name": "Arkivet",
+          "description": "Din guide till offentlighetsprincipen i Sverige.",
+          "inLanguage": "sv"
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://fupp.se/faq",
+          "mainEntity": SITE.faq.map(f => ({
+            "@type": "Question",
+            "name": f.q,
+            "acceptedAnswer": {"@type": "Answer", "text": f.a}
+          }))
+        }
+      ]
+    });
+    document.head.appendChild(ld);
+  })();
+
+  /* ═══════════════════════════════════════════════════════════════
      INJECT PAGES
      ═══════════════════════════════════════════════════════════════ */
   const app = $('#app');
@@ -950,7 +1006,7 @@
      ═══════════════════════════════════════════════════════════════ */
   let currentPage = null;
 
-  function navigate(id) {
+  function navigate(id, push = true) {
     if (!pages[id]) id = 'hem';
     if (id === currentPage) return;
 
@@ -968,7 +1024,15 @@
 
     currentPage = id;
     document.body.classList.toggle('on-hem', id === 'hem');
-    history.replaceState(null, '', '#' + id);
+
+    const url = id === 'hem' ? '/' : '/' + id;
+    if (push) history.pushState({id}, '', url);
+
+    const desc = PAGE_DESCS[id] || PAGE_DESCS.hem;
+    document.querySelector('meta[name="description"]').content = desc;
+    document.querySelector('meta[property="og:url"]').content = 'https://fupp.se' + url;
+    document.querySelector('link[rel="canonical"]').href = 'https://fupp.se' + url;
+
     document.title = id === 'hem'
       ? 'Arkivet — fupp.se'
       : `${next.querySelector('.title,.title-sm,.contact-title,.hero-name')?.textContent?.trim() || id} — fupp.se`;
@@ -976,18 +1040,23 @@
 
   // delegate all internal links
   document.addEventListener('click', e => {
-    const a = e.target.closest('a[data-link], a[href^="#"]');
+    const a = e.target.closest('a[data-link]');
     if (!a) return;
     const href = a.getAttribute('href');
-    if (!href || !href.startsWith('#')) return;
+    if (!href || !href.startsWith('/')) return;
     if (a.hasAttribute('target')) return;
     e.preventDefault();
-    navigate(href.slice(1));
+    navigate(href.slice(1) || 'hem');
+  });
+
+  // back/forward
+  window.addEventListener('popstate', e => {
+    navigate(e.state?.id || location.pathname.slice(1) || 'hem', false);
   });
 
   // initial route
   try {
-    navigate(location.hash.slice(1) || 'hem');
+    navigate(location.pathname.slice(1) || 'hem', false);
   } catch(e) {
     console.error('Navigate error:', e);
     const first = document.querySelector('.page');
