@@ -1099,7 +1099,7 @@
   let cx=0,cy=0,tx=0,ty=0;
   document.addEventListener('mousemove',e=>{tx=e.clientX;ty=e.clientY});
   (function loop(){
-    cx+=(tx-cx)*.35;cy+=(ty-cy)*.35;
+    cx+=(tx-cx)*.55;cy+=(ty-cy)*.55;
     cursor.style.left=cx+'px';cursor.style.top=cy+'px';
     requestAnimationFrame(loop);
   })();
